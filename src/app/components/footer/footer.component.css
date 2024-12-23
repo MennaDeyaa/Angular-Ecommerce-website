@@ -1,0 +1,37 @@
+.footer {
+    background-color: #282c34; /* Dark background */
+    color: white; /* White text */
+    padding: 20px 0; /* Padding around the footer */
+    text-align: center; /* Centered text */
+    position: relative; /* Allows positioning */
+    bottom: 0; /* Sticks to the bottom of the page */
+    width: 100%; /* Full width */
+  }
+  
+  .footer-content {
+    max-width: 1200px; /* Max width for the content */
+    margin: 0 auto; /* Center the content */
+    padding: 0 20px; /* Horizontal padding */
+  }
+  
+  .footer-links {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 10px 0; /* Margin above and below the links */
+  }
+  
+  .footer-links li {
+    display: inline; /* Inline list items */
+    margin: 0 15px; /* Spacing between links */
+  }
+  
+  .footer-links a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Transition effect for hover */
+  }
+  
+  .footer-links a:hover {
+    color: #61dafb; /* Change color on hover */
+  }
+  

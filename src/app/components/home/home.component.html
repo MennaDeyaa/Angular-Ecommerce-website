@@ -1,0 +1,67 @@
+<!-- main slider -->
+ <section>
+    <div class="row g-0 m-0 p-0">
+
+<div class="col-md-10 m-0 p-0">
+    <owl-carousel-o [options]="mainslider">
+        <ng-template carouselSlide> <img height="400"    class=" w-100" src="./assets/images/main-slider-1.jpeg">        </ng-template>  
+        <ng-template carouselSlide> <img height="400"    class=" w-100" src="./assets/images/main-slider-2.jpeg">        </ng-template>  
+        <ng-template carouselSlide> <img height="400"    class=" w-100" src="./assets/images/main-slider-3.jpeg">        </ng-template>  
+
+      </owl-carousel-o>
+    
+</div> 
+
+<div class="col-md-2 m-0 p-0">
+<img height="200" class=" w-100" src="./assets/images/slide-1.jpeg">
+<img height="200" class=" w-100" src="./assets/images/slide-2.jpeg">
+</div>
+
+</div>
+ </section>
+
+<!-- categories -->
+ <section>
+  <owl-carousel-o [options]="customOptions">
+
+    <ng-container *ngFor="let item of categories">
+      <ng-template carouselSlide >
+        <div>
+            <img [src]="item.image" height="270" class="w-100" [alt]="item.name">
+            <h3 class="h5">{{item.name}}</h3>
+        </div>
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
+ </section>
+
+<!-- products -->
+ <section class="my-4">
+    <h2>Popular Products</h2>
+    <input type="search" placeholder="search..." class="mx-auto w-100 my-3 form-control" [(ngModel)]="searchtext" >  
+    <div class="row g-4">
+        <div class="col-md-2" *ngFor="let item of products | search: searchtext ">
+            <div class="product ">
+                <div class=" p-2 cursor-pointer" [routerLink]="['/details' , item._id]">
+                    <img [src]="item.imageCover" [title]="item.title" class="w-100">
+                    <h3 class="h6">{{item.category.name}}</h3>
+                    <h4 class="h6">
+                      {{item.title | termtext:2}}
+                       <span *ngIf="item.title.split(' ').length > 2" class="h6">...</span>
+                    </h4>
+                    <div class="d-flex align-items-center justify-content-between">
+                      <span>{{item.price | currency:"EGP"}} </span>
+                      <div class="d-flex align-items-center ">
+                          
+                          <i class="fas fa-star rating-color"></i>
+                          <div class="text-muted">{{item.ratingsAverage}}</div>
+                      </div>
+                  </div>
+                </div>
+                <button class="btn-main w-100 my-1 " (click)="addingTocart(item._id)">Add to cart</button>
+            </div>
+        </div>
+    </div>
+ </section>
+

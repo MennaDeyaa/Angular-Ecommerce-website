@@ -1,0 +1,26 @@
+<section class="bg-main-light w-75 mx-auto rounded-3 p-4 my-3 ">
+    <form [formGroup]="checkoutForm" (ngSubmit)="checkingout()">
+        <div class="py-2">
+            <label for="details">details</label>
+       <textarea formControlName="details" name="details" id="details" class="form-control"></textarea>
+        </div>
+       <div class="py-2">
+        <label for="phone">phone</label>
+        <input type="tel" id="phone" formControlName="phone" class="form-control">
+       </div>
+       <div class="py-2">
+        <label for="city">city</label>
+        <div class="d-flex align-items-center ">
+            <select  id="city" formControlName="city" class="form-control  "> 
+                <option *ngFor="let city of cities" [value]="city">{{city}} </option>    
+            </select>
+            <i class="fa-solid fa-caret-down "></i>
+        </div>
+        
+       </div>
+       <button  class="btn btn-main ms-auto d-block">
+        <i class="fas fa-spinner fa-spin" *ngIf="isloading"></i>
+        Go To Checkout</button>
+    <p class="alert alert-danger" *ngIf="errorMSG">{{errorMSG}}</p>
+    </form>
+</section>
