@@ -1,0 +1,37 @@
+<section class="bg-main-light rounded p-4 my-3 w-75 mx-auto">
+    <h1>Login Now</h1> 
+    <form [formGroup]="loginform" (ngSubmit)="onlogin()" >
+        <div class="mb-2">
+            <label for="email">email :</label>
+        <input #loginhash formControlName="email" id="email" type="email" class="form-control">
+        <div class="alert alert-danger" *ngIf="( loginhash.value.length>0  || loginform.get('email')?.touched) && loginform.get('email')?.errors">
+          <p *ngIf="loginform.get('email')?.getError('required')">Email is required</p>
+          <p *ngIf="loginform.get('email')?.getError('email')">Email InValid Format</p>
+        </div>
+        </div>
+        
+         <div class="mb-2">
+            <label for="password">password :</label>
+        <input formControlName="password" id="password" type="password" class="form-control" #passhash>
+        <div class="alert alert-danger" *ngIf="( passhash.value.length>0 || loginform.get('password')?.touched) && loginform.get('password')?.errors">
+            <p *ngIf="loginform.get('password')?.getError('required')">Password is required</p>
+            <div *ngIf="loginform.get('password')?.hasError('pattern')">
+                Password must contain:
+                <ul>
+                  <li>At least one uppercase letter (A-Z)</li>
+                  <li>At least one lowercase letter (a-z)</li>
+                  <li>At least one number (0-9)</li>
+                  <li>At least one special character (e.g., $!%*?&)</li>
+                  <li>Between 8 and 20 characters long</li>
+                </ul>
+
+              </div> 
+        </div>
+     </div>
+        
+        <button  class="btn btn-main ms-auto d-block">
+            <i class="fas fa-spinner fa-spin" *ngIf="isloading"></i>
+            login</button>
+        <p class="alert alert-danger" *ngIf="errorMSG">{{errorMSG}}</p>
+    </form>
+</section>
